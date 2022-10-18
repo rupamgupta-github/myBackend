@@ -15,19 +15,19 @@ router.get("/students", function (req, res) {
 });
 
 router.get("/movies", function (req, res) {
-  const mo = ["Midnightmass", "Friday 13", "NArnia", "Harry Potter"];
-  res.send(mo);
+  const mov = ["Midnightmass", "Friday 13", "NArnia", "Harry Potter"];
+  res.send(mov);
 });
 
 router.get("/movies/:index", function (req, res) {
   let inParams = req.params;
   console.log(inParams);
-  const mo = ["Midnightmass", "Friday 13", "NArnia", "Harry Potter"];
-  if (inParams.index >( mo.length-1)) {
-    res.send("not valid");
+  const mov = ["Midnightmass", "Friday 13", "NArnia", "Harry Potter"];
+  if (inParams.index > mov.length - 1) {
+    res.send("Out of the Index");
+  } else {
+    res.send(mov[inParams.index]);
   }
-
-  res.send(mo[inParams.index]);
 });
 
 router.get("/films", function (req, res) {
@@ -76,8 +76,8 @@ router.get("/films/:id", function (req, res) {
   ];
 
   for (i of fi) {
-    if (idParam.id > fi.length  || idParam.id == 0) {
-      res.send("not valid");
+    if (idParam.id > fi.length || idParam.id == 0) {
+      res.send("No movie exists with this id");
     }
 
     if (i.id == idParam.id) {
@@ -86,9 +86,7 @@ router.get("/films/:id", function (req, res) {
     }
   }
   res.send("enter valid");
-
   console.log(idParam);
-
   res.send(idParam.name);
 });
 
