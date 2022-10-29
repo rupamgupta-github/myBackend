@@ -1,21 +1,26 @@
 const express = require('express');
 const router = express.Router();
 
-const authorController= require("../controllers/authorController")
-const bookController= require("../controllers/bookController")
+const newBookController= require("../controllers/newBookController")
 
-router.get("/test-me", function (req, res) {
-    res.send("My first ever api!")
+router.get("/", function (req, res) {
+    res.send("Hello, Welcome to Programming Yatra")
 })
 
-router.post("/createAuthor", authorController.createAuthor  )
+router.post("/createNewAuthor", newBookController.createNewAuthor)
 
-router.get("/getAuthorsData", authorController.getAuthorsData)
+router.get("/getNewAuthor", newBookController.getNewAuthor)
 
-router.post("/createBook", bookController.createBook  )
+router.post("/createNewBook", newBookController.createNewBook)
 
-router.get("/getBooksData", bookController.getBooksData)
+router.get("/getNewBook", newBookController.getNewBook)
 
-router.get("/getBooksWithAuthorDetails", bookController.getBooksWithAuthorDetails)
+router.post("/createNewPublisher", newBookController.createNewPublisher)
+
+router.get("/getNewPublisher", newBookController.getNewPublisher)
+
+router.put("/putNewBook", newBookController.putNewBook)
+
+router.put("/updateRating", newBookController.updateRating)
 
 module.exports = router;
