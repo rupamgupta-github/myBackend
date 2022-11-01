@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+
 // const UserModel= require("../models/userModel.js")
 const UserController= require("../controllers/userController")
 const BookController= require("../controllers/bookController")
@@ -57,6 +58,9 @@ router.get("/basicRoute", commonMW.mid1, commonMW.mid2, commonMW.mid3, commonMW.
 // router.get("/basicRoute4", commonMW.mid1, commonMW.mid4, UserController.basicCode4)
 
 
+router.get("/getTimeStamp",commonMW.mid5,UserController.basicCode5)
 
+
+router.get("/getFun",commonMW.mid5,UserController.basicCode6)
 
 module.exports = router;
