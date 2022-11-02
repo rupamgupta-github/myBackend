@@ -1,3 +1,7 @@
+# Programming Yatra
+
+www.programmingyatra.com
+
 # TOPIC: Middleware2
 
 ## Request
@@ -18,11 +22,11 @@ TOPIC: Middleware2
 ```
 { 
     _id: ObjectId("61951bfa4d9fe0d34da86829"),
-    name: "Sabiha Khan",
+    name: "Rupam Gupta",
 	balance:100, // Default balance at user registration is 100
 	address:"New delhi",
-	age: 90,
- 	gender: “female” // Allowed values are - “male”, “female”, “other”
+	age: 22,
+ 	gender: “male” // Allowed values are - “male”, “female”, “other”
 	isFreeAppUser: false // Default false value.
 }
 ```
