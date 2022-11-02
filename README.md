@@ -1,6 +1,7 @@
 # Programming Yatra
 
-www.programmingyatra.com
+www.programmingyatra.com 
+https://programmingyatra247.blogspot.com/
 
 # TOPIC: Middleware2
 
