@@ -46,10 +46,10 @@ const myOrderMiddleware = function(req, res, next){
         return res.send("Please Provides Header")
     }
     else{
-        if(req.headers["isfreeappuser"]==='true'){
+        if(req.headers["isfreeappuser"]=="true"){
             req.body.isFreeAppUser = true
         }
-        else if(req.headers["isfreeappuser"]==='false' ){
+        else if(req.headers["isfreeappuser"]=="false" ){
             req.body.isFreeAppUser = false
         }
         next()

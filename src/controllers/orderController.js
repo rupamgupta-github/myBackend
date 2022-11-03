@@ -1,13 +1,13 @@
 const newOrder = require("../models/newOrder");
 const newProduct = require("../models/newProduct");
 const newUser = require("../models/newUser");
-const moment=require('moment')
+const moment = require("moment");
 
 const createNewUser = async function (req, res) {
   let data = req.body;
   let { author_name } = data;
   if (!author_name)
-    return res.send({ msg: "author_name is mandatory in the request" });
+    return res.send({ msg: "author_name is mandatory" });
   let savedData = await newUser.create(data);
   res.send({ data: savedData });
 };
@@ -16,7 +16,7 @@ const createNewProduct = async function (req, res) {
   let data = req.body;
   let { product_name } = data;
   if (!product_name)
-    return res.send({ msg: "product_name is mandatory in the request" });
+    return res.send({ msg: "product_name is mandatory" });
   let savedData = await newProduct.create(data);
   res.send({ data: savedData });
 };
@@ -28,10 +28,10 @@ const createNewOrder = async function (req, res) {
   let checkUserId = await newUser.findById(userId);
   let checkProductId = await newProduct.findById(productId);
   if (!userId) {
-    return res.send({ msg: "userId is a mandatory field" });
+    return res.send({ msg: "userId is a mandatory " });
   }
   if (!productId) {
-    return res.send({ msg: "productId is a mandatory field" });
+    return res.send({ msg: "productId is a mandatory " });
   }
   if (!checkUserId) {
     return res.send({ msg: "invalid userId" });
@@ -39,11 +39,11 @@ const createNewOrder = async function (req, res) {
   if (!checkProductId) {
     return res.send({ msg: "invalid productId" });
   }
-  let isFreeUser = req.header["isfreeappuser"];
-  if (isFreeUser === "false") {
-    let user = await newUser.findById(userId); 
-    let userBalance = user["balance"];
-    let product = await newProduct.findById(productId); 
+  let isFreeUser = req.headers["isfreeappuser"];
+  if (isFreeUser == "false") {
+    let user = await newUser.findById(userId);
+    let userBalance = user.balance;
+    let product = await newProduct.findById(productId);
     let productPrice = product.price;
     if (userBalance >= productPrice) {
       let userNewBalance = userBalance - productPrice;
@@ -52,20 +52,20 @@ const createNewOrder = async function (req, res) {
         { $set: { balance: userNewBalance } }
       );
       let todayDate = moment().format("DD-MM-YYYY");
-      Data["amount"] = productPrice;
-      Data["date"] = todayDate;
+      Data.amount = userNewBalance;
+      Data.date = todayDate;
       let savedData = await newOrder.create(Data);
-      res.send({ orderplaced: savedData });
+      return res.send({ orderplaced: savedData });
     } else {
       return res.send({ msg: "you dont have enough money" });
     }
-  } else if (isFreeUser === "true") {
+  } else if (isFreeUser == "true") {
     let today = moment().format("DD-MM-YYYY");
     Data["amount"] = 0;
     Data["isFreeAppUser"] = true;
     Data["date"] = today;
     let savedData = await newOrder.create(Data);
-    res.send({ orderPlaced: savedData });
+    return res.send({ orderPlaced: savedData });
   }
 
   let OrderData = await newOrder.create(Data);
