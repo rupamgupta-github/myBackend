@@ -39,7 +39,7 @@ const createNewOrder = async function (req, res) {
   if (!checkProductId) {
     return res.send({ msg: "invalid productId" });
   }
-  let isFreeUser = req.header["isfreeappuser"];
+  let isFreeUser = req.headers["isfreeappuser"];
   if (isFreeUser === "false") {
     let user = await newUser.findById(userId); 
     let userBalance = user["balance"];
