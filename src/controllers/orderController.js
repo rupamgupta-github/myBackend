@@ -52,7 +52,7 @@ const createNewOrder = async function (req, res) {
         { $set: { balance: userNewBalance } }
       );
       let todayDate = moment().format("DD-MM-YYYY");
-      Data["amount"] = productPrice;
+      Data["amount"] = userNewBalance;
       Data["date"] = todayDate;
       let savedData = await newOrder.create(Data);
       res.send({ orderplaced: savedData });
