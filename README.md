@@ -1,3 +1,6 @@
+# Programming Yatra
+
+www.programmingyatra.in or www.programmingyatra.com
 # TOPIC: Authorisation
 
 ## Authorisation with JWT
@@ -9,12 +12,12 @@
 ```
  	{
     "_id" : ObjectId("6226e3d2b98f22b349ca58be"),
-    "firstName" : "Sabiha",
-    "lastName" : "Khan",
+    "firstName" : "Rupam",
+    "lastName" : "Gupta",
     "mobile" : "9898909087",
-    "emailId" : "sk@gmail.com",
+    "emailId" : "rupamgupta.1020@gmail.com",
     "password" : "password123",
-    "gender" : "female",
+    "gender" : "male",
 	"isDeleted": false, //default value is false 
     "age" : 12,
     "createdAt" : ISODate("2022-03-08T05:04:18.737Z"),
